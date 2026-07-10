@@ -49,10 +49,15 @@ $posts_query = $conn->query($sql_feed);
                 <p class="text-slate-400 text-xs mt-1">Review live project updates or query target talent stacks instantly.</p>
             </div>
             
-            <form action="" method="GET" class="w-full md:w-80 flex gap-2">
-                <input type="text" name="search" value="<?= htmlspecialchars($search_query) ?>" placeholder="Filter by Skill or Name..." class="w-full bg-slate-950 text-xs rounded-xl px-4 py-2.5 border border-slate-800 focus:outline-none text-white">
-                <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 rounded-xl text-xs font-semibold transition"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <a href="edit_profile.php" class="bg-gray-700 text-white text-xs px-3 py-2.5 rounded-xl hover:bg-gray-600 transition">
+                    Edit Profile
+                </a>
+                <form action="" method="GET" class="w-full md:w-80 flex gap-2">
+                    <input type="text" name="search" value="<?= htmlspecialchars($search_query) ?>" placeholder="Filter by Skill or Name..." class="w-full bg-slate-950 text-xs rounded-xl px-4 py-2.5 border border-slate-800 focus:outline-none text-white">
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 rounded-xl text-xs font-semibold transition"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -87,7 +92,6 @@ $posts_query = $conn->query($sql_feed);
                                 <a href="profile.php?id=<?= $post['profile_uid'] ?>" class="text-[10px] font-bold text-indigo-400 hover:bg-indigo-500/10 px-2.5 py-1.5 rounded-lg border border-indigo-500/20 transition">View Portfolio</a>
                             </div>
                             
-                            <!-- Check if post content exists -->
                             <?php if(!empty($post['post_content'])): ?>
                                 <p class="text-slate-300 text-xs leading-relaxed"><?= nl2br($post['post_content']) ?></p>
                             <?php else: ?>
